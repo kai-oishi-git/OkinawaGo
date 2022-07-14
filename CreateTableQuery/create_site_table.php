@@ -1,6 +1,6 @@
 <?php
 
-    $mysql = new mysqli('localhost', "OkinawaGO", "OkinawaGO", "OkinawaGO");
+    $mysql = new mysqli('localhost', "OkinawaGo", "OkinawaGo", "OkinawaGo");
     
     if (mysqli_connect_error()){
         die("データベースの接続に失敗しました");
