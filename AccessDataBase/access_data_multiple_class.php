@@ -1,4 +1,5 @@
 <?php
+require_once "../Entity/Comment.php";
 /*
 データベースと直接やり取りするクラス
 検索時はこのクラスのメソッドを使って情報を取得する
@@ -26,13 +27,18 @@ class AccessForDataBase_toGetMultipleData {
 
         $stmt->execute();
         
-        $stmt->bind_result($user_id, $id_site);
+        $stmt->bind_result($content_comment, $id_site);
+        $comments = array();
+
         while ($stmt->fetch()) {
-            echo "ID_USER=$user_id, ID_SITE=$id_site<br>"; 
+            $comment = new Comment($id_site, $content_comment);
+            array_push($comments, $comment);
         }
 
         $stmt->close();
         $mysqli->close();
+
+        return $comments;
     }
 
 　　//サイトIDから写真を検索

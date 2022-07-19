@@ -7,6 +7,5 @@ class Comment {
         $this->id_site = $id_site;
         $this->comment = $comment;
     }
-
 }
 ?>
