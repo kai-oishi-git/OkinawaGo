@@ -15,13 +15,13 @@ class AccessForDataBase {
             return;
         }
         // 検索用のSQL分
-        $query = "";
+        $query = mysql_query('SELECT * FROM site INNER JOIN area ON site.id_area = area.id_area INNER JOIN comment ON site.id_site = comment.id_site INNER JOIN img ON site.id_site = img.id_site INNER JOIN category ON site.id = category.id WHERE name_area like ? ');
 
         // preparedStatement生成
         $stmt = $mysqli->prepare($query);
         
         // SQL文中の ? の部分に$nameを格納 
-        $stmt->bind_param('s',$name);
+        $stmt->bind_param('s',"%".$name."%");
 
         $stmt->execute();
         
