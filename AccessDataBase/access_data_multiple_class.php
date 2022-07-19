@@ -1,5 +1,7 @@
 <?php
 require_once "../Entity/Comment.php";
+require_once "../Entity/Category.php";
+require_once "../Entity/Image.php";
 /*
 データベースと直接やり取りするクラス
 検索時はこのクラスのメソッドを使って情報を取得する
@@ -41,7 +43,7 @@ class AccessForDataBase_toGetMultipleData {
         return $comments;
     }
 
-　　//サイトIDから写真を検索
+
     static public function selectImageBySiteID($id_site){
         $mysqli = new mysqli('localhost', "OkinawaGo", "OkinawaGo", "OkinawaGo");
 
@@ -59,14 +61,18 @@ class AccessForDataBase_toGetMultipleData {
         $stmt->bind_param('d',$id_site);
 
         $stmt->execute();
-        
-        $stmt->bind_result($user_id, $id_site);
+        $stmt->bind_result($img_file, $id_site);
+        $files = array();
+
         while ($stmt->fetch()) {
-            echo "ID_USER=$user_id, ID_SITE=$id_site<br>"; 
+            $image = new Image($img_file, $id_site);
+            array_push($files, $image);
         }
 
         $stmt->close();
         $mysqli->close();
+
+        return $files;
     }
 
     //サイトIDからカテゴリーを検索
@@ -87,14 +93,19 @@ class AccessForDataBase_toGetMultipleData {
         $stmt->bind_param('d',$id_site);
 
         $stmt->execute();
-        
-        $stmt->bind_result($user_id, $id_site);
+
+        $stmt->bind_result($name_category, $id_site);
+        $catgories = array();
+
         while ($stmt->fetch()) {
-            echo "ID_USER=$user_id, ID_SITE=$id_site<br>"; 
+            $catgeory = new Catgeory($name_categeory, $id_site);
+            array_push($categories, $category);
         }
 
         $stmt->close();
         $mysqli->close();
+
+        return $categories;
     }
 }
 ?>
