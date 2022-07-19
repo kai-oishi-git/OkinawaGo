@@ -1,6 +1,31 @@
 INSERT INTO site VALUES (
     0,
+    'テスト',
     0,
-    0,
-    
+    '沖縄県テスト市'
 );
+
+INSERT INTO area VALUES (
+    0,
+    'テスト市'
+);
+
+INSERT INTO comment VALUES (
+    'テストコメント1',
+    '0'
+);
+
+INSERT INTO comment VALUES (
+    'テストコメント2',
+    '0'
+);
+
+INSERT INTO img VALUES (
+    '../img/test.png',
+    'id_site'
+)
+
+INSERT INTO category VALUES (
+    'テストカテゴリー1',
+    '0'
+)
