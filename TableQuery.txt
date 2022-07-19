@@ -7,7 +7,7 @@
   CREATE TABLE site (
         id_site int PRIMARY KEY,
         id_place int,
-        id_area varchar(100),
+        id_area int,
         address varchar(100)
     );
     CREATE TABLE area (
