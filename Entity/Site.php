@@ -1,19 +1,15 @@
 <?php
 class Site {
+    public $id_site;
     public $name_site;
+    public $id_area;
     public $address;
-    public $name_area;
-    public $comment;
-    public $img_site;
-    public $name_category;
 
-    function __construct($name, $address, $name_area, $comment, $img_site, $name_category) {
+    function __construct($id_site, $name, $id_area, $address) {
+        $this->id_site = $id_site;
         $this->name_site = $name;
+        $this->id_area = $id_area;
         $this->address = $address;
-        $this->name_area = $name_area;
-        $this->comment = $comment;
-        $this->img_site = $img_site;
-        $this->name_category = $name_category;
     }
 }
 ?>
