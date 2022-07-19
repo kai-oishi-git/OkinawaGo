@@ -14,12 +14,23 @@ class AccessForDataBase {
             die("データベースの接続に失敗しました");
             return;
         }
-
+        // 検索用のSQL分
         $query = "";
 
+        // preparedStatement生成
         $stmt = $mysqli->prepare($query);
+        
+        // SQL文中の ? の部分に$nameを格納 
+        $stmt->bind_param('s',$name);
+
         $stmt->execute();
-    
+        
+        $stmt->bind_result($user_id, $name);
+        while ($stmt->fetch()) {
+            echo "ID=$user_id, NAME=$name<br>"; 
+        }
+
+        $stmt->close();
         $mysqli->close();
     }
 }
