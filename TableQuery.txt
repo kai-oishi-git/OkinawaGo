@@ -1,7 +1,8 @@
-  DROP TABLE site;
-  DROP TABLE area;
-  DROP TABLE comment;
-  DROP TABLE img;
+  DROP TABLE IF EXISTS site;
+  DROP TABLE IF EXISTS area;
+  DROP TABLE IF EXISTS comment;
+  DROP TABLE IF EXISTS img;
+  DROP TABLE IF EXISTS category;
 
   CREATE TABLE site (
         id_site int PRIMARY KEY,
@@ -9,17 +10,22 @@
         name_site varchar(100),
         address varchar(100)
     );
-    "CREATE TABLE area (
+    CREATE TABLE area (
         id_area int PRIMARY KEY,
         name_area varchar(100)
     );
 
-    "CREATE TABLE comment (
+    CREATE TABLE comment (
         content_comment varchar(100),
         id_site int 
     );
 
-    "CREATE TABLE img (
+    CREATE TABLE img (
         img_file varchar(100),
         id_site int    
+    );
+
+    CREATE TABLE category (
+        category_name varchar(100),
+        id_site int
     );
