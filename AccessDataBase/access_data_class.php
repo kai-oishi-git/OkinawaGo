@@ -15,7 +15,7 @@ class AccessForDataBase {
             return;
         }
         // 検索用のSQL分
-        $query = mysql_query('SELECT * FROM site INNER JOIN area ON site.id_area = area.id_area INNER JOIN comment ON site.id_site = comment.id_site INNER JOIN img ON site.id_site = img.id_site INNER JOIN category ON site.id = category.id WHERE name_area like ? ');
+        $query = "SELECT * FROM site INNER JOIN area ON site.id_area = area.id_area INNER JOIN comment ON site.id_site = comment.id_site INNER JOIN img ON site.id_site = img.id_site INNER JOIN category ON site.id_site = category.id_site WHERE name_area like = ?";
 
         // preparedStatement生成
         $stmt = $mysqli->prepare($query);
