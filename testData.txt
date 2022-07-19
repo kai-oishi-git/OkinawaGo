@@ -1,0 +1,52 @@
+DELETE FROM site;
+DELETE FROM area;
+DELETE FROM comment;
+DELETE FROM img;
+DELETE FROM category;
+
+INSERT INTO site VALUES (
+    0,
+    'テスト',
+    0,
+    '沖縄県テスト市'
+);
+
+INSERT INTO area VALUES (
+    0,
+    'テスト市'
+);
+
+INSERT INTO comment VALUES (
+    'テストコメント1',
+    '0'
+);
+
+INSERT INTO comment VALUES (
+    'テストコメント2',
+    '0'
+);
+
+INSERT INTO img VALUES (
+    '../img/test1.png',
+    '0'
+);
+
+INSERT INTO img VALUES (
+    '../img/test2.png',
+    '0'
+);
+
+INSERT INTO category VALUES (
+    'テストカテゴリー1',
+    '0'
+);
+
+INSERT INTO category VALUES (
+    'テストカテゴリー2',
+    '0'
+);
+
+INSERT INTO category VALUES (
+    'テストカテゴリー3',
+    '0'
+);
