@@ -7,6 +7,9 @@ class Site {
     public $img_site;
     public $name_category;
 
-    
+    function __construct($name)
+    {
+        $this->name_site = $name;
+    }
 }
 ?>
