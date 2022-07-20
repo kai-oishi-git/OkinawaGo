@@ -27,12 +27,22 @@ class AccessForDataBase {
         $stmt->execute();
         
         $stmt->bind_result($user_id, $name);
+       
+        $sites = array();
+        $areas = array();
+
         while ($stmt->fetch()) {
-            echo "ID=$user_id, NAME=$name<br>"; 
+            $site = new Site($id_site, $name_site, $id_area, $address);
+            $area = new Area($id_area, $name_area);
+            array_push($sites, $site);
+            array_push($areas, $area);
+    
+            //echo "ID=$user_id, NAME=$name<br>"; 
         }
 
         $stmt->close();
         $mysqli->close();
+        return array($sites, $areas);
     }
 }
 ?>
