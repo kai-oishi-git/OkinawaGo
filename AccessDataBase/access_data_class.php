@@ -15,7 +15,7 @@ class AccessForDataBase {
             die("データベースの接続に失敗しました");
             return;
         }
-        // 検索用のSQL分
+        // エリア検索用のSQL分
         $query = "SELECT * FROM site INNER JOIN area ON site.id_area = area.id_area WHERE name_site LIKE ?";
 
         // preparedStatement生成
@@ -42,6 +42,7 @@ class AccessForDataBase {
 
         $stmt->close();
         $mysqli->close();
+
         return array($sites, $areas);
     }
 }
