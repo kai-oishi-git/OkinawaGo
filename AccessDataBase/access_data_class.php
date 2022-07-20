@@ -26,7 +26,7 @@ class AccessForDataBase {
 
         $stmt->execute();
         
-        $stmt->bind_result($user_id, $name);
+        $stmt->bind_result($id_site, $name_site, $id_area, $address, $id_area, $name_area);
        
         $sites = array();
         $areas = array();
