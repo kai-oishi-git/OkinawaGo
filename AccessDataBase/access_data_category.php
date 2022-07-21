@@ -11,7 +11,7 @@ static public function selectSiteBySiteID($id_site){
             return;
         }
         // Site検索用のSQL分
-        $query = "SELECT * FROM site WHERE id_site = ?";
+        $query = "SELECT * FROM site INNER JOIN area ON site.id_area = area.id_area WHERE id_site = ?";
 
         // preparedStatement生成
         $stmt = $mysqli->prepare($query);
@@ -21,17 +21,23 @@ static public function selectSiteBySiteID($id_site){
 
         $stmt->execute();
         
-        $stmt->bind_result($id_site,$name_site,$id_area,$address);
-        $site = array();
+        $stmt->bind_result($id_site, $name_site, $id_area, $address, $id_area, $name_area);
+       
+        $sites = array();
+        $areas = array();
 
         while ($stmt->fetch()) {
-            $Site = new Site($id_site,$name_site,$id_area,$address);
-            array_push($site,$Site);
+            $site = new Site($id_site, $name_site, $id_area, $address);
+            $area = new Area($id_area, $name_area);
+            array_push($sites, $site);
+            array_push($areas, $area);
+    
+            //echo "ID=$user_id, NAME=$name<br>"; 
         }
 
         $stmt->close();
         $mysqli->close();
 
-        return $site;
+        return array($sites, $areas);
     }
 }
