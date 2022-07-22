@@ -95,10 +95,10 @@ class AccessForDataBase_toGetMultipleData {
         $stmt->execute();
 
         $stmt->bind_result($name_category, $id_site);
-        $catgories = array();
+        $categories = array();
 
         while ($stmt->fetch()) {
-            $catgeory = new Catgeory($name_categeory, $id_site);
+            $category = new Category($name_category, $id_site);
             array_push($categories, $category);
         }
 
