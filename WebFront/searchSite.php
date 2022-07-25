@@ -65,7 +65,7 @@
 			<form method="post" action="Servlet.php" class="input">
             <?php
             //下の処理のままだと写真が大きく表示されます
-            $images = glob("img/*.jpg");
+            $images = $_GET["sites"]->image->img_file;
             foreach($images as $path) {
             echo '<input type = "image" img src= "' , $path , '"  alt="" loading="lazy">';
             }
@@ -78,32 +78,6 @@
 			</form>
 			
 		</div>
-		
-		<div class="pagenation_block wrapper">
-			
-		
-			<form method="post" action="Servlet.php" class="input">
-			<?php
-            $images = glob("img/*.jpg");
-            foreach($images as $path) {
-            echo '<input type = "image" img src= "' , $path , '" alt="loading="lazy" class="img">';
-            }
-            ?>
-			<input type="hidden" name="site" value="site">
-			<input type="hidden" name="area" value="area">
-			<input type="hidden" name="comment" value="comment">
-            <input type="hidden" name="image" value="image">
-            <input type="hidden" name="category" value="category">
-			</form>
-			
-		</div>
-
-			
-		
-		
-		
-		
-
 	</div>
 
 	<footer>

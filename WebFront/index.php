@@ -27,7 +27,7 @@
   <input type="submit" value="&#xf002;" class="fas">
 </form>
 <div class="recomend">
-<a href="searchSite.jsp">
+<a href="searchSpo.php">
 <h2>スポット検索</h2>
 <div class="wrapper img">
 <?php

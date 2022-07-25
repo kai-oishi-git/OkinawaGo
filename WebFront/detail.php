@@ -81,7 +81,7 @@
         ?>
 		</div>
 		<h2><?php
-        $site = CombinedSite::$site;
+        //$site = CombinedSite::$site;
 		echo '<img src=$site alt="写真">';
         ?></h2>
 		
@@ -91,7 +91,7 @@
 
 		<table class="comment">
         <?php
-        $comment = CombinedSite::$comment;
+        //$comment = CombinedSite::$comment;
 		echo '<td class="commentImg"><img src=$comment></td>';
         ?>
 		</table>
