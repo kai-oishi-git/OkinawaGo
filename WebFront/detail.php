@@ -64,7 +64,7 @@
 
 	<div class="content">
 		<h1>
-			<a href="index.jsp"><img src="img/logo.jpg" alt="ロゴ"></a>
+			<a href="index.php"><img src="img/logo.jpg" alt="ロゴ"></a>
 		</h1>
 		<a href="javascript:history.back();"><i class="fas fa-arrow-left"></i>前のページへ戻る</a>
 		
@@ -81,8 +81,14 @@
         ?>
 		</div>
 		<h2><?php
+
+        //セッションで受け取る予定
+		$images = $_SESSION['image'];
+		forach($images as $image){
         //$site = CombinedSite::$site;
-		echo '<img src=$site alt="写真">';
+		//echo '<img src=$site alt="写真">';
+		echo '<img src=$image alt="写真">';
+		}
         ?></h2>
 		
 		
@@ -91,8 +97,12 @@
 
 		<table class="comment">
         <?php
-        //$comment = CombinedSite::$comment;
+		//セッションで受け取る予定
+        $comments = $_SESSION['comment'];
+		//CombinedSite::$comment;
+		foreach($comments as $comment){
 		echo '<td class="commentImg"><img src=$comment></td>';
+		}
         ?>
 		</table>
 
