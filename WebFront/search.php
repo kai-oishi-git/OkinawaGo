@@ -1,5 +1,6 @@
 
 <?php 
+session_start();
 require_once "../../OkinawaGo/AccessDataBase/access_data.php";
 require_once "../../OkinawaGo/Entity/CombinedSite.php";
 require_once "../../OkinawaGo/Entity/Comment.php";
@@ -16,15 +17,16 @@ if(isset($text)){
     echo $text;
     
     $infolist= AccessData::selectByFreeword($text);
-    var_dump($infolist);
-    
-    
+    if(empty($infolist)){
+        $_SESSION['err'] = "入力された条件で情報が見つかりませんでした"; //エラー文を記載
+        header('Location: http://localhost/OkinawaGo/WebFront/index.php');
+        exit();
+    }
+    $_SESSION['freeword'] = $infolist; //セッションで渡す場合
+    $_SESSION['test'] = array("沖縄","島人");
+header('Location: http://localhost/OkinawaGo/WebFront/searchSite.php');
+exit();
 }
-//header('Location: http://localhost/OkinawaGo/WebFront/test.php');
-//exit();
-/*} else if(){
-    $spotmap = $_GET["spotmap"]
-    $ = $_GET[""]
-}*/
+ 
 
 ?>

@@ -18,11 +18,22 @@
    <title>検索トップ画面｜OkinawaGo</title>
 </head>
 <body>
+
 <div class="content">
-<h1><a href="index.jsp"><img src="img/logo.jpg" alt="ロゴ" ></a></h1>
+<h1><a href="index.php"><img src="img/logo.jpg" alt="ロゴ" ></a></h1>
+    <?php
+    session_start();     
+    if(isset($_SESSION['err'])){
+      $errmsg = $_SESSION['err']?>
+    <div class="error">
+			<p><?php echo $errmsg ?></p>
+      <?php } 
+      unset($_SESSION['err'])?>
+			</div>
+   
 		
 <h2>フリーワード検索</h2>
-<form action="search.php" method="post" class="input">
+<form action="search.php" method="get" class="input">
   <input type="search" name="toptext" class="input_var" required>
   <input type="submit" value="&#xf002;" class="fas">
 </form>
