@@ -1,0 +1,28 @@
+DELETE FROM site;
+DELETE FROM area;
+DELETE FROM comment;
+DELETE FROM img;
+DELETE FROM category;
+
+INSERT INTO area VALUES(
+    0,
+    'やんばる'
+),(
+    1,
+    '美ら海水族館周辺',
+),(
+    2,
+    'アメリカンヴィレッジ周辺',
+),(
+    3,
+    '青の洞窟周辺'
+),(
+    4,
+    '那覇市'
+),(
+    5,
+    'ひめゆりの搭周辺'
+);
+
+INSERT INTO site VALUES
+(0, '東村ふれあいヒルギ公園', 0, '沖縄県国頭郡東村字慶佐次54-1'),

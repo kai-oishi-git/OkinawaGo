@@ -4,7 +4,6 @@
  require_once "../AccessDataBase/access_data.php";
 // //require_once "../AccessDataBase/access_data_multiple_class.php";
 
-
 // //id_siteとnameの情報を取得
 // $id_site = array();
 // $name = array();
@@ -35,8 +34,8 @@
 
 $selectedSpot = $_POST["spotmap"];
 $combined = AccessData::selectByAreaName($selectedSpot);
+print_r($combined);
 
-//詳細情報画面に遷移
-header( "Location: ./detail.php?sites=".$combined."") ;
-exit ;
+//header( "Location: ./detail.php?sites=".$combined."") ;
+//exit ;
 ?>

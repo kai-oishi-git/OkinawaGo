@@ -55,7 +55,6 @@ class AccessData
             {$where} 
         GROUP BY site.id_site;
         ";
-        print($query);
         $stmt = $mysqli->prepare($query);
         
         // エリア検索とフリーワード検索の場合でバインドする数が異なるため分岐
