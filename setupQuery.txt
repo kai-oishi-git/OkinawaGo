@@ -46,11 +46,11 @@ INSERT INTO comment VALUES
 ('人生で最高の体験でした', 2);
 
 INSERT INTO img VALUES
-('../img/01IMG_1602.jpg', 0),
-('../img/01IMG_1612.jpg', 1),
-('../img/01IMG_2382.jpg', 2),
-('../img/03IMG1928.jpg', 3),
-('../img/03IMG1946.jpg', 4);
+('img/01IMG_1602.jpg', 0),
+('img/01IMG_1612.jpg', 1),
+('img/01IMG_2382.jpg', 2),
+('img/03IMG1928.jpg', 3),
+('img/03IMG1946.jpg', 4);
 
 
 INSERT INTO category VALUES
