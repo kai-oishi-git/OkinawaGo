@@ -71,38 +71,33 @@
 
 		<div class="topImg">
         <?php
-        //array($site, $area) = selectByName($name);
-        //配列のままでいいのか
-        //$comment = AccessForDataBase_toGetMultipleData->selectCommentBySiteID($id_site);
-        //$image = AccessForDataBase_toGetMultipleData->selectImageBySiteID($id_site);
-        //$category = AccessForDataBase_toGetMultipleData->selectCategoryBySiteID($id_site);
-        //$combined = new Combined($site, $area, $comment, $image, $category);
-		echo '<img src=$combined->$image alt="写真">';
+		//POSTで写真を受け取る
+		$image = $_POST['image'];
+		echo $image;
+        ?></h2>
         ?>
 		</div>
-		<h2><?php
 
-        //セッションで受け取る予定
-		$images = $_SESSION['image'];
-		forach($images as $image){
-        //$site = CombinedSite::$site;
-		//echo '<img src=$site alt="写真">';
-		echo '<img src=$image alt="写真">';
-		}
+		<h2><?php
+        //POSTで観光地名を受け取る
+		$name_site = $_POST['name_site'];
+		echo $name_site;
+		?>
+		<br>
+		<?php
+  		//POSTで住所を受け取る
+ 		$address = $_POST['address'];
+ 		echo $address;
         ?></h2>
 		
 		
 		
 		<h3>コメント</h3>
-
 		<table class="comment">
         <?php
-		//セッションで受け取る予定
-        $comments = $_SESSION['comment'];
-		//CombinedSite::$comment;
-		foreach($comments as $comment){
-		echo '<td class="commentImg"><img src=$comment></td>';
-		}
+		//POSTでコメント受け取る
+        $comments = $_POST['comment'];
+		echo $comment;
         ?>
 		</table>
 
