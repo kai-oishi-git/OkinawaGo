@@ -1,7 +1,7 @@
 <?php
 	require_once "../AccessDataBase/access_data.php";
-	$selectedSpot = $_POST["spotmap"];
-	$combined = AccessData::selectByAreaName($selectedSpot);
+	$spot = $_POST["spotmap"];
+	$combined = AccessData::selectByAreaName($spot);
 ?>
 <!doctype html>
 <html lang="ja">
@@ -59,27 +59,36 @@
 <title>検索結果画面｜OkinawaGo</title>
 </head>
 <body>
-	<div class="content">
+	<div class="content" style="text-align: center;">
 		<h1>
 			<a href="index.php"><img src="img/logo.jpg" alt="ロゴ"></a>
 		</h1>
 
         
-		<div class="pagenation_block wrapper">
-			<form method="post" action="Servlet.php">
+		<!-- <div class="pagenation_block wrapper"> -->
+			<!-- <form method="POST" action="detail.php"> -->
             <?php
+				$index = 0;
+
 				foreach($combined as $site) {
-					echo '<input type="image" src="'.$site->image[0].'"  class="inputimg">';
+					echo '<form method="POST" action="detail.php">';
+					echo '<input type="image" src="'.$site->image[0].'" class="inputimg">';
+					echo '<input type="hidden" name="name_site" value="'.$site->site->name_site.'">';
+					echo '<input type="hidden" name="address" value="'.$site->site->address.'">';
+					foreach($site->comment as $com){
+						echo '<input type="hidden" name="comment[]" value="'.$com.'">';
+					}
+					echo '</form>';
 				}
             ?>
-			<input type="hidden" name="site" value="site">
-			<input type="hidden" name="area" value="area">
-			<input type="hidden" name="comment" value="comment">
-            <input type="hidden" name="image" value="image">
-            <input type="hidden" name="category" value="category">
-			</form>
+			<!-- </form>
+		写真
+		観光地名
+		住所
+		コメント
+		-->
 			
-		</div>
+		<!-- </div> -->
 	</div>
 
 	<footer>
