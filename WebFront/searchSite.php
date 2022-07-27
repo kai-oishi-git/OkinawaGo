@@ -1,4 +1,8 @@
-
+<?php
+	require_once "../AccessDataBase/access_data.php";
+	$selectedSpot = $_POST["spotmap"];
+	$combined = AccessData::selectByAreaName($selectedSpot);
+?>
 <!doctype html>
 <html lang="ja">
 <head>
@@ -62,13 +66,11 @@
 
         
 		<div class="pagenation_block wrapper">
-			<form method="post" action="Servlet.php" class="input">
+			<form method="post" action="Servlet.php">
             <?php
-            //下の処理のままだと写真が大きく表示されます
-            $images = $_GET["sites"]->image->img_file;
-            foreach($images as $path) {
-            echo '<input type = "image" img src= "' , $path , '"  alt="" loading="lazy">';
-            }
+				foreach($combined as $site) {
+					echo '<input type="image" src="'.$site->image[0].'"  class="inputimg">';
+				}
             ?>
 			<input type="hidden" name="site" value="site">
 			<input type="hidden" name="area" value="area">

@@ -35,7 +35,6 @@
 $selectedSpot = $_POST["spotmap"];
 $combined = AccessData::selectByAreaName($selectedSpot);
 print_r($combined);
-
-//header( "Location: ./detail.php?sites=".$combined."") ;
-//exit ;
+header( "Location: ./searchSite.php?sites={$combined}") ;
+exit();
 ?>
