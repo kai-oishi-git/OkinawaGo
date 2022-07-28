@@ -88,18 +88,56 @@
 						}
 					}
 				}else{
+					session_start();
+					header('Expires:-1');
+					header('Cache-Control:');
+					header('Pragma:');
+
 					foreach($combined as $site) {
-						echo '<form method="POST" action="detail.php">';
-						echo '<input type="image" name="image" value="'.$site->image[0].'" src="'.$site->image[0].'" class="inputimg">';
-						echo '<input type="hidden" name="name_site" value="'.$site->site->name_site.'">';
-						echo '<input type="hidden" name="address" value="'.$site->site->address.'">';
-						echo '<input type="hidden" name="image" value="'.$site->image[0].'">';
-						foreach($site->comment as $com){
-							echo '<input type="hidden" name="comment[]" value="'.$com.'">';
+						foreach($combined as $site) {
+							echo '<form method="POST" action="detail.php">';
+							echo '<input type="image" name="image" value="'.$site->image[0].'" src="'.$site->image[0].'" class="inputimg">';
+							echo '<input type="hidden" name="name_site" value="'.$site->site->name_site.'">';
+							echo '<input type="hidden" name="address" value="'.$site->site->address.'">';
+							echo '<input type="hidden" name="image" value="'.$site->image[0].'">';
+							foreach($site->comment as $com){
+								echo '<input type="hidden" name="comment[]" value="'.$com.'">';
+							}
 						}
-						echo '</form>';
 					}
 				}
+				// if(isset($_SESSION['freeword'])){ 
+				// 	echo "1";
+				// 	$freeword = $_SESSION['freeword'];
+				// 	foreach($freeword as $site){
+				// 		echo '<form method="POST" action="detail.php">';
+				// 		echo '<input type="image" name="image" value="'.$site->image[0].'" src="'.$site->image[0].'" class="inputimg">';
+				// 		echo '<input type="hidden" name="name_site" value="'.$site->site->name_site.'">';
+				// 		echo '<input type="hidden" name="address" value="'.$site->site->address.'">';
+				// 		echo '<input type="hidden" name="image" value="'.$site->image[0].'">';
+				// 		foreach($site->comment as $com){
+				// 			echo '<input type="hidden" name="comment[]" value="'.$com.'">';
+				// 		}
+				// 		echo '</form>';
+				// 	}
+				// 	unset( $_SESSION['freeword']);
+				// }
+
+			    // else if(isset($spot)){
+				// $index = 0;
+				// 	echo "2";
+				foreach($combined as $site) {
+					echo '<form method="POST" action="detail.php">';
+					echo '<input type="image" name="image" value="'.$site->image[0].'" src="'.$site->image[0].'" class="inputimg">';
+					echo '<input type="hidden" name="name_site" value="'.$site->site->name_site.'">';
+					echo '<input type="hidden" name="address" value="'.$site->site->address.'">';
+					echo '<input type="hidden" name="image" value="'.$site->image[0].'">';
+					foreach($site->comment as $com){
+						echo '<input type="hidden" name="comment[]" value="'.$com.'">';
+					}
+				// 	echo '</form>';
+				// }
+			}
             ?>
 			<!-- </form>
 		写真
