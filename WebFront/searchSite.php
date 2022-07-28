@@ -77,7 +77,7 @@
 				header('Pragma:');
 
 			     
-				if(isset($freeword)){ 
+				if(isset($_SESSION['freeword'])){ 
 					echo "1";
 					$freeword = $_SESSION['freeword'];
 					foreach($freeword as $site){
