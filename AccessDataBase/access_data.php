@@ -100,4 +100,36 @@ class AccessData
 
         return $combinedSites;
     }
+
+    static public function insertByComment($id_site,$comment){
+        $mysqli = new mysqli('localhost', "OkinawaGo", "OkinawaGo", "OkinawaGo");
+
+        if (mysqli_connect_error()){
+            die("データベースの接続に失敗しました");
+            return;
+        }
+        // コメント追加用のSQL
+        $query = "INSERT INTO comment(id_site,content_comment) VALUES (?,?)";
+
+        // preparedStatement生成
+        $stmt = $mysqli->prepare($query);
+        
+        // SQL文中の ? の部分に$nameを格納 
+        $stmt->bind_param('ds',$id_site,$comment);
+
+        $stmt->execute();
+        
+        $stmt->bind_result($comment, $id_site);
+        $comments = array();
+
+        while ($stmt->fetch()) {
+            $content_comment = new Comment($id_site, $comment);
+            array_push($comments, $content_comment);
+        }
+
+        $stmt->close();
+        $mysqli->close();
+
+        return $comments;
+     }   
 }
