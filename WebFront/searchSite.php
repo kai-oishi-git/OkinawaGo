@@ -72,6 +72,10 @@
 			<!-- <form method="POST" action="detail.php"> -->
             <?php
 			    session_start();
+				header('Expires:-1');
+				header('Cache-Control:');
+				header('Pragma:');
+
 			    $freeword = $_SESSION['freeword'];
 				if(isset($freeword)){ 
 					foreach($freeword as $site){
