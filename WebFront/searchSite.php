@@ -1,9 +1,9 @@
 <?php
 	require_once "../AccessDataBase/access_data.php";
-	
+	$combined = null;
 	if(isset($_POST["spotmap"])){
-    $spot = $_POST["spotmap"];
-	$combined = AccessData::selectByAreaName($spot);
+		$spot = $_POST["spotmap"];
+		$combined = AccessData::selectByAreaName($spot);
 	}
 ?>
 <!doctype html>
@@ -71,10 +71,24 @@
 		<!-- <div class="pagenation_block wrapper"> -->
 			<!-- <form method="POST" action="detail.php"> -->
             <?php
-			    session_start();
-			    $freeword = $_SESSION['freeword'];
-				if(isset($freeword)){ 
-					foreach($freeword as $site){
+				if (is_null($combined)) {
+					session_start();
+					$freeword = $_SESSION['freeword'];
+					if(isset($freeword)){ 
+						foreach($freeword as $site){
+							echo '<form method="POST" action="detail.php">';
+							echo '<input type="image" name="image" value="'.$site->image[0].'" src="'.$site->image[0].'" class="inputimg">';
+							echo '<input type="hidden" name="name_site" value="'.$site->site->name_site.'">';
+							echo '<input type="hidden" name="address" value="'.$site->site->address.'">';
+							echo '<input type="hidden" name="image" value="'.$site->image[0].'">';
+							foreach($site->comment as $com){
+								echo '<input type="hidden" name="comment[]" value="'.$com.'">';
+							}
+							echo '</form>';
+						}
+					}
+				}else{
+					foreach($combined as $site) {
 						echo '<form method="POST" action="detail.php">';
 						echo '<input type="image" name="image" value="'.$site->image[0].'" src="'.$site->image[0].'" class="inputimg">';
 						echo '<input type="hidden" name="name_site" value="'.$site->site->name_site.'">';
@@ -86,21 +100,6 @@
 						echo '</form>';
 					}
 				}
-			    else if(isset($combined)){
-				$index = 0;
-
-				foreach($combined as $site) {
-					echo '<form method="POST" action="detail.php">';
-					echo '<input type="image" name="image" value="'.$site->image[0].'" src="'.$site->image[0].'" class="inputimg">';
-					echo '<input type="hidden" name="name_site" value="'.$site->site->name_site.'">';
-					echo '<input type="hidden" name="address" value="'.$site->site->address.'">';
-					echo '<input type="hidden" name="image" value="'.$site->image[0].'">';
-					foreach($site->comment as $com){
-						echo '<input type="hidden" name="comment[]" value="'.$com.'">';
-					}
-					echo '</form>';
-				}
-			}
             ?>
 			<!-- </form>
 		写真
