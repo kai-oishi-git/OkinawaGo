@@ -10,6 +10,7 @@ class AccessData
 {
     public static function selectByAreaName($selectedAreaName)
     {
+        // 実行するSQL文のWHERE句
         $whereClause = "
             AREA.name_area = ?
         ";
@@ -20,15 +21,18 @@ class AccessData
 
     public static function selectByFreeword($inputWord)
     {
+        // 実行するSQL文のWHERE句
         $whereClause = "
             site.name_site LIKE ? OR
             site.address LIKE ? OR
             category.name_category LIKE ?
         ";
+
         $combinedSites = self::select("%" . $inputWord . "%", $whereClause);
         return $combinedSites;
     }
 
+    // 検索ワードとWHERE句を受け取って実行、結果を返す
     private static function select($input, $where)
     {
         $mysqli = new mysqli('localhost', "OkinawaGo", "OkinawaGo", "OkinawaGo");
@@ -52,15 +56,16 @@ class AccessData
         INNER JOIN img ON site.id_site = img.id_site
         INNER JOIN category ON site.id_site = category.id_site
         WHERE
-            {$where} 
+            {$where}
         GROUP BY site.id_site;
         ";
+
         $stmt = $mysqli->prepare($query);
-        
+
         // エリア検索とフリーワード検索の場合でバインドする数が異なるため分岐
-        if (strpos($input, "%") !== false ){
+        if (strpos($input, "%") !== false) {
             $stmt->bind_param('sss', $input, $input, $input);
-        }else {
+        } else {
             $stmt->bind_param('s', $input);
         }
 
@@ -101,10 +106,11 @@ class AccessData
         return $combinedSites;
     }
 
-    static public function insertByComment($id_site,$comment){
+    public static function insertByComment($id_site, $comment)
+    {
         $mysqli = new mysqli('localhost', "OkinawaGo", "OkinawaGo", "OkinawaGo");
 
-        if (mysqli_connect_error()){
+        if (mysqli_connect_error()) {
             die("データベースの接続に失敗しました");
             return;
         }
@@ -113,14 +119,14 @@ class AccessData
 
         // preparedStatement生成
         $stmt = $mysqli->prepare($query);
-        
-        // SQL文中の ? の部分に$nameを格納 
-        $stmt->bind_param('ds',$id_site,$comment);
+
+        // SQL文中の ? の部分に$nameを格納
+        $stmt->bind_param('ds', $id_site, $comment);
 
         $stmt->execute();
-        
+
         $stmt->close();
         $mysqli->close();
 
-     }   
+    }
 }
