@@ -21,6 +21,7 @@
 
 <div class="content">
 <h1><a href="index.php"><img src="img/logo&img/logo.jpg" alt="ロゴ" ></a></h1>
+  <!--検索結果がなかった際に、エラー文を表示-->
    <?php 
     session_start();     
     if(isset($_SESSION['err'])){
@@ -32,25 +33,24 @@
       </div>
       <?php } ?>
       
-     
-   
 		
 <h2>フリーワード検索</h2>
-<form action="search.php" method="get" class="input">
-  <input type="search" name="toptext" class="input_var" required>
-  <input type="submit" value="&#xf002;" class="fas">
-</form>
+  <form action="search.php" method="get" class="input">
+    <input type="search" name="toptext" class="input_var" required>
+    <input type="submit" value="&#xf002;" class="fas">
+  </form>
 <div class="recomend">
-<a href="searchSpo.php">
+    <a href="searchSpo.php">
 <h2>スポット検索</h2>
 <div class="wrapper img">
-<?php
-$count = 0;
-$images = glob("img/*.jpg");
-shuffle($images);
-foreach($images as $path) {
-  $count++;
-  echo '<img src= "' , $path , '" alt="" loading="lazy">';
+  <?php
+    //ランダムに写真を3枚表示させる
+    $count = 0;
+    $images = glob("img/*.jpg");
+    shuffle($images);
+    foreach($images as $path) {
+     $count++;
+    echo '<img src= "' , $path , '" alt="" loading="lazy">';
   if($count == 3){
     break;
   }

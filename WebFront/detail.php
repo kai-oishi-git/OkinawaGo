@@ -10,10 +10,6 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-	crossorigin="anonymous"></script>
-
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
@@ -28,35 +24,6 @@
 
 <!--favicon-->
 <link href="favicon.ico" rel="shortcut icon">
-
-<script>
-	(function(d) {
-		var config = {
-			kitId : 'nvj0abk',
-			scriptTimeout : 3000,
-			async : true
-		}, h = d.documentElement, t = setTimeout(function() {
-			h.className = h.className.replace(/\bwf-loading\b/g, "")
-					+ " wf-inactive";
-		}, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d
-				.getElementsByTagName("script")[0], a;
-		h.className += " wf-loading";
-		tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
-		tk.async = true;
-		tk.onload = tk.onreadystatechange = function() {
-			a = this.readyState;
-			if (f || a && a != "complete" && a != "loaded")
-				return;
-			f = true;
-			clearTimeout(t);
-			try {
-				Typekit.load(config)
-			} catch (e) {
-			}
-		};
-		s.parentNode.insertBefore(tk, s)
-	})(document);
-</script>
 <title>詳細結果画面｜OkinawaGo</title>
 </head>
 
@@ -104,7 +71,7 @@
         ?>
 		</table>
 
-
+		<!-- コメント投稿 -->
 		<form action="commentServlet.php" method="post" id="commentForm"
 			name="commentForm" enctype="multipart/form-data" class="com">
 			
