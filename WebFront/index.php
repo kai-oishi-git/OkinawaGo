@@ -21,15 +21,18 @@
 
 <div class="content">
 <h1><a href="index.php"><img src="img/logo.jpg" alt="ロゴ" ></a></h1>
-    <?php
+   <?php 
     session_start();     
     if(isset($_SESSION['err'])){
       $errmsg = $_SESSION['err']?>
     <div class="error">
 			<p><?php echo $errmsg ?></p>
-      <?php } 
+      <?php 
       unset($_SESSION['err'])?>
-			</div>
+      </div>
+      <?php } ?>
+      
+     
    
 		
 <h2>フリーワード検索</h2>
@@ -47,10 +50,12 @@ foreach($images as $path) {
 echo '<img src= "' , $path , '" alt="" loading="lazy">';
 }
 ?>
+    </div>
+  </div>
 </div>
 </a>
 <footer>
-    <p>　</p>
+    <p></p>
 </footer>
 </body>
 
