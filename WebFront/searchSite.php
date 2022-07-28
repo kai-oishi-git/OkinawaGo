@@ -1,10 +1,10 @@
 <?php
-	require_once "../AccessDataBase/access_data.php";
-	$combined = null;
-	if(isset($_POST["spotmap"])){
-		$spot = $_POST["spotmap"];
-		$combined = AccessData::selectByAreaName($spot);
-	}
+require_once "../AccessDataBase/access_data.php";
+$combined = null;
+if (isset($_POST["spotmap"])) {
+    $spot = $_POST["spotmap"];
+    $combined = AccessData::selectByAreaName($spot);
+}
 ?>
 <!doctype html>
 <html lang="ja">
@@ -67,85 +67,85 @@
 			<a href="index.php"><img src="img/logo.jpg" alt="ロゴ"></a>
 		</h1>
 
-        
+
 		<!-- <div class="pagenation_block wrapper"> -->
 			<!-- <form method="POST" action="detail.php"> -->
             <?php
-				if (is_null($combined)) {
-					session_start();
-					$freeword = $_SESSION['freeword'];
-					if(isset($freeword)){ 
-						foreach($freeword as $site){
-							echo '<form method="POST" action="detail.php">';
-							echo '<input type="image" name="image" value="'.$site->image[0].'" src="'.$site->image[0].'" class="inputimg">';
-							echo '<input type="hidden" name="name_site" value="'.$site->site->name_site.'">';
-							echo '<input type="hidden" name="address" value="'.$site->site->address.'">';
-							echo '<input type="hidden" name="image" value="'.$site->image[0].'">';
-							foreach($site->comment as $com){
-								echo '<input type="hidden" name="comment[]" value="'.$com.'">';
-							}
-							echo '</form>';
-						}
-					}
-				}else{
-					session_start();
-					header('Expires:-1');
-					header('Cache-Control:');
-					header('Pragma:');
+// フリーワード検索
+if (is_null($combined)) {
+    session_start();
+    $freeword = $_SESSION['freeword'];
+    if (isset($freeword)) {
+        foreach ($freeword as $site1) {
+            echo '<form method="POST" action="detail.php">';
+            echo '<input type="image" name="image" value="' . $site1->image[0] . '" src="' . $site1->image[0] . '" class="inputimg">';
+            echo '<input type="hidden" name="name_site" value="' . $site1->site->name_site . '">';
+            echo '<input type="hidden" name="address" value="' . $site1->site->address . '">';
+            echo '<input type="hidden" name="image" value="' . $site1->image[0] . '">';
+            foreach ($site1->comment as $com) {
+                echo '<input type="hidden" name="comment[]" value="' . $com . '">';
+            }
+            echo '</form>';
+        }
+    }
+} else {
+    // エリア検索
+    session_start();
+    header('Expires:-1');
+    header('Cache-Control:');
+    header('Pragma:');
+    foreach ($combined as $site) {
+        echo '<form method="POST" action="detail.php">';
+        echo '<input type="image" name="image" value="' . $site->image[0] . '" src="' . $site->image[0] . '" class="inputimg">';
+        echo '<input type="hidden" name="name_site" value="' . $site->site->name_site . '">';
+        echo '<input type="hidden" name="address" value="' . $site->site->address . '">';
+        echo '<input type="hidden" name="image" value="' . $site->image[0] . '">';
+        foreach ($site->comment as $com) {
+            echo '<input type="hidden" name="comment[]" value="' . $com . '">';
+        }
+		echo '</form>';
+    }
 
-					foreach($combined as $site) {
-						foreach($combined as $site) {
-							echo '<form method="POST" action="detail.php">';
-							echo '<input type="image" name="image" value="'.$site->image[0].'" src="'.$site->image[0].'" class="inputimg">';
-							echo '<input type="hidden" name="name_site" value="'.$site->site->name_site.'">';
-							echo '<input type="hidden" name="address" value="'.$site->site->address.'">';
-							echo '<input type="hidden" name="image" value="'.$site->image[0].'">';
-							foreach($site->comment as $com){
-								echo '<input type="hidden" name="comment[]" value="'.$com.'">';
-							}
-						}
-					}
-				}
-				// if(isset($_SESSION['freeword'])){ 
-				// 	echo "1";
-				// 	$freeword = $_SESSION['freeword'];
-				// 	foreach($freeword as $site){
-				// 		echo '<form method="POST" action="detail.php">';
-				// 		echo '<input type="image" name="image" value="'.$site->image[0].'" src="'.$site->image[0].'" class="inputimg">';
-				// 		echo '<input type="hidden" name="name_site" value="'.$site->site->name_site.'">';
-				// 		echo '<input type="hidden" name="address" value="'.$site->site->address.'">';
-				// 		echo '<input type="hidden" name="image" value="'.$site->image[0].'">';
-				// 		foreach($site->comment as $com){
-				// 			echo '<input type="hidden" name="comment[]" value="'.$com.'">';
-				// 		}
-				// 		echo '</form>';
-				// 	}
-				// 	unset( $_SESSION['freeword']);
-				// }
+}
+// if(isset($_SESSION['freeword'])){
+//     echo "1";
+//     $freeword = $_SESSION['freeword'];
+//     foreach($freeword as $site){
+//         echo '<form method="POST" action="detail.php">';
+//         echo '<input type="image" name="image" value="'.$site->image[0].'" src="'.$site->image[0].'" class="inputimg">';
+//         echo '<input type="hidden" name="name_site" value="'.$site->site->name_site.'">';
+//         echo '<input type="hidden" name="address" value="'.$site->site->address.'">';
+//         echo '<input type="hidden" name="image" value="'.$site->image[0].'">';
+//         foreach($site->comment as $com){
+//             echo '<input type="hidden" name="comment[]" value="'.$com.'">';
+//         }
+//         echo '</form>';
+//     }
+//     unset( $_SESSION['freeword']);
+// }
 
-			    // else if(isset($spot)){
-				// $index = 0;
-				// 	echo "2";
-				foreach($combined as $site) {
-					echo '<form method="POST" action="detail.php">';
-					echo '<input type="image" name="image" value="'.$site->image[0].'" src="'.$site->image[0].'" class="inputimg">';
-					echo '<input type="hidden" name="name_site" value="'.$site->site->name_site.'">';
-					echo '<input type="hidden" name="address" value="'.$site->site->address.'">';
-					echo '<input type="hidden" name="image" value="'.$site->image[0].'">';
-					foreach($site->comment as $com){
-						echo '<input type="hidden" name="comment[]" value="'.$com.'">';
-					}
-				// 	echo '</form>';
-				// }
-			}
-            ?>
+// else if(isset($spot)){
+// $index = 0;
+//     echo "2";
+// foreach($combined as $site) {
+//     echo '<form method="POST" action="detail.php">';
+//     echo '<input type="image" name="image" value="'.$site->image[0].'" src="'.$site->image[0].'" class="inputimg">';
+//     echo '<input type="hidden" name="name_site" value="'.$site->site->name_site.'">';
+//     echo '<input type="hidden" name="address" value="'.$site->site->address.'">';
+//     echo '<input type="hidden" name="image" value="'.$site->image[0].'">';
+//     foreach($site->comment as $com){
+//         echo '<input type="hidden" name="comment[]" value="'.$com.'">';
+//     }
+//     echo '</form>';
+// }
+?>
 			<!-- </form>
 		写真
 		観光地名
 		住所
 		コメント
 		-->
-			
+
 		<!-- </div> -->
 	</div>
 
