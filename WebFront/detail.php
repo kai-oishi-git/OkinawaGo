@@ -100,24 +100,24 @@
 			echo $com;
 			echo '<br>';
 		}
+
         ?>
 		</table>
 
 
-		<form action="comment" method="post" id="commentForm"
+		<form action="commentServlet.php" method="post" id="commentForm"
 			name="commentForm" enctype="multipart/form-data" class="com">
-			<p>
-				<input type="text" name="comment_nm" required maxlength="20"
-					placeholder="ユーザー名（20字まで）" class="comment_name">
-			</p>
+			
 			<textarea name="comment_tx" required maxlength="140"
-				placeholder="本文（140字まで）" class="comment_text"></textarea>
-			<p>
-				<input type="file" id="avatar" name="comment_img" accept="image/png, image/jpeg">
-			</p>
+				placeholder="本文（140字まで）" class="comment_text" ></textarea>
+			
 			<div class="submit_button">
 				<button type="submit" id="button" name="name">コメント投稿</button>
 			</div>
+			<?php
+				$id_site = $_POST['id_site'];
+				echo '<input type="hidden" name="id_site" value="' . $id_site . '">';
+        	?>
 		</form>
 
 
