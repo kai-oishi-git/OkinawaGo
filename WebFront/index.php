@@ -45,9 +45,15 @@
 <h2>スポット検索</h2>
 <div class="wrapper img">
 <?php
+$count = 0;
 $images = glob("img/*.jpg");
+shuffle($images);
 foreach($images as $path) {
-echo '<img src= "' , $path , '" alt="" loading="lazy">';
+  $count++;
+  echo '<img src= "' , $path , '" alt="" loading="lazy">';
+  if($count == 3){
+    break;
+  }
 }
 ?>
     </div>
