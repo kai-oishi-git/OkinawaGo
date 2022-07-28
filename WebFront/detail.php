@@ -64,7 +64,7 @@
 
 	<div class="content">
 		<h1>
-			<a href="index.php"><img src="img/logo.jpg" alt="ロゴ"></a>
+			<a href="index.php"><img src="img/logo&img/logo.jpg" alt="ロゴ"></a>
 		</h1>
 		<a href="javascript:history.back();"><i class="fas fa-arrow-left"></i>前のページへ戻る</a>
 		

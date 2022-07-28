@@ -20,7 +20,7 @@
 <body>
 
 <div class="content">
-<h1><a href="index.php"><img src="img/logo.jpg" alt="ロゴ" ></a></h1>
+<h1><a href="index.php"><img src="img/logo&img/logo.jpg" alt="ロゴ" ></a></h1>
    <?php 
     session_start();     
     if(isset($_SESSION['err'])){

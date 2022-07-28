@@ -54,7 +54,7 @@
 <body>
 	<div class="content">
 		<h1>
-			<a href="index.php"><img src="img/logo.jpg" alt="ロゴ"></a>
+			<a href="index.php"><img src="img/logo&img/logo.jpg" alt="ロゴ"></a>
 		</h1>
 	</div>
 			
@@ -62,7 +62,7 @@
 		<h2>スポット検索</h2>
 		<div class="imagemap">
 			<section>
-				<img src="img/map.jpg" usemap="#ImageMap" alt="マップ" />
+				<img src="img/logo&img/map.jpg" usemap="#ImageMap" alt="マップ" />
 				<map name="ImageMap">
 					<form method="post" action="searchSite.php">
 						<button type="submit" style="display: none">
