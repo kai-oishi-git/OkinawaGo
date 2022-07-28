@@ -20,45 +20,16 @@
 <!--favicon-->
 <link href="favicon.ico" rel="shortcut icon">
 
-<script>
-	(function(d) {
-		var config = {
-			kitId : 'nvj0abk',
-			scriptTimeout : 3000,
-			async : true
-		}, h = d.documentElement, t = setTimeout(function() {
-			h.className = h.className.replace(/\bwf-loading\b/g, "")
-					+ " wf-inactive";
-		}, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d
-				.getElementsByTagName("script")[0], a;
-		h.className += " wf-loading";
-		tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
-		tk.async = true;
-		tk.onload = tk.onreadystatechange = function() {
-			a = this.readyState;
-			if (f || a && a != "complete" && a != "loaded")
-				return;
-			f = true;
-			clearTimeout(t);
-			try {
-				Typekit.load(config)
-			} catch (e) {
-			}
-		};
-		s.parentNode.insertBefore(tk, s)
-	})(document);
-</script>
 <title>スポット検索画面｜OkinawaGo</title>
 </head>
-
 <body>
 	<div class="content">
 		<h1>
 			<a href="index.php"><img src="img/logo&img/logo.jpg" alt="ロゴ"></a>
 		</h1>
 	</div>
-			
-		
+	
+	<!-- スポット検索のマップの表示 -->
 		<h2>スポット検索</h2>
 		<div class="imagemap">
 			<section>
@@ -120,15 +91,14 @@
 
 				</map>
 			</section>
-
 		</div>
-
 	</div>
-	<!-- Optional JavaScript -->
-	<script
+	
+	<!-- マップの処理-->
+	 <script
 		src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
 	<script>
-		imageMapResize();
+		imageMapResize();  
 	</script>
 
 	<footer>
