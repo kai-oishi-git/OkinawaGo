@@ -73,9 +73,8 @@
         <?php
 		//POSTで写真を受け取る
 		$image = $_POST['image'];
-		echo $image;
+		echo '<img src="'.$image.'">';
         ?></h2>
-        ?>
 		</div>
 
 		<h2><?php
@@ -97,7 +96,10 @@
         <?php
 		//POSTでコメント受け取る
         $comments = $_POST['comment'];
-		echo $comment;
+		foreach($comments as $com) {
+			echo $com;
+			echo '<br>';
+		}
         ?>
 		</table>
 
