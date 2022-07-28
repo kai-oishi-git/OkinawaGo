@@ -76,8 +76,10 @@
 				header('Cache-Control:');
 				header('Pragma:');
 
-			    $freeword = $_SESSION['freeword'];
-				if(isset($freeword)){ 
+			     
+				if(isset($_SESSION['freeword'])){ 
+					echo "1";
+					$freeword = $_SESSION['freeword'];
 					foreach($freeword as $site){
 						echo '<form method="POST" action="detail.php">';
 						echo '<input type="image" name="image" value="'.$site->image[0].'" src="'.$site->image[0].'" class="inputimg">';
@@ -89,10 +91,11 @@
 						}
 						echo '</form>';
 					}
+					unset( $_SESSION['freeword']);
 				}
-			    else if(isset($combined)){
+			    else if(isset($spot)){
 				$index = 0;
-
+					echo "2";
 				foreach($combined as $site) {
 					echo '<form method="POST" action="detail.php">';
 					echo '<input type="image" name="image" value="'.$site->image[0].'" src="'.$site->image[0].'" class="inputimg">';
