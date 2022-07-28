@@ -80,6 +80,7 @@ if (is_null($combined)) {
             echo '<form method="POST" action="detail.php">';
             echo '<input type="image" name="image" value="' . $site1->image[0] . '" src="' . $site1->image[0] . '" class="inputimg">';
             echo '<input type="hidden" name="name_site" value="' . $site1->site->name_site . '">';
+			echo '<input type="hidden" name="id_site" value="' . $site1->site->id_site . '">';
             echo '<input type="hidden" name="address" value="' . $site1->site->address . '">';
             echo '<input type="hidden" name="image" value="' . $site1->image[0] . '">';
             foreach ($site1->comment as $com) {
@@ -94,10 +95,12 @@ if (is_null($combined)) {
     header('Expires:-1');
     header('Cache-Control:');
     header('Pragma:');
+	echo '</form>';
     foreach ($combined as $site) {
         echo '<form method="POST" action="detail.php">';
         echo '<input type="image" name="image" value="' . $site->image[0] . '" src="' . $site->image[0] . '" class="inputimg">';
         echo '<input type="hidden" name="name_site" value="' . $site->site->name_site . '">';
+		echo '<input type="hidden" name="id_site" value="' . $site->site->id_site . '">';
         echo '<input type="hidden" name="address" value="' . $site->site->address . '">';
         echo '<input type="hidden" name="image" value="' . $site->image[0] . '">';
         foreach ($site->comment as $com) {
