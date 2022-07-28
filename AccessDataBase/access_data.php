@@ -119,17 +119,8 @@ class AccessData
 
         $stmt->execute();
         
-        $stmt->bind_result($comment, $id_site);
-        $comments = array();
-
-        while ($stmt->fetch()) {
-            $content_comment = new Comment($id_site, $comment);
-            array_push($comments, $content_comment);
-        }
-
         $stmt->close();
         $mysqli->close();
 
-        return $comments;
      }   
 }
