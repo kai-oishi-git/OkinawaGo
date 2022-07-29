@@ -1,7 +1,6 @@
 <?php
     require_once "../Entity/CombinedSite.php";
-    require_once "../AccessDataBase/access_data_multiple_class.php";
-    require_once "../AccessDataBase/access_data_class.php";
+
 ?>
 <!doctype html>
 <html lang="ja">
